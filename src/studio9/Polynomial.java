@@ -4,13 +4,13 @@ import java.util.LinkedList;
 
 public class Polynomial {
 	
-	private LinkedList<Double> list;
+	private LinkedList<Double> coefficients;
 
 	/**
 	 * Constructs a Polynomial with no terms yet.
 	 */
 	public Polynomial() {
-		//FIXME
+		this.coefficients = new LinkedList<Double>();
 	}
 
 	
@@ -20,7 +20,7 @@ public class Polynomial {
 	 * @return polynomial with added term
 	 */
 	public void addTerm(double coeff) {
-		//FIXME
+		this.coefficients.add(coeff);
 	}
 	
 	/*
@@ -29,7 +29,18 @@ public class Polynomial {
 	 * Cx^N + Cx^N-1 + ... + Cx + C
 	 */
 	public String toString() {
-		return ""; //FIXME
+		String result = "";
+		int exp = coefficients.size() - 1;
+		for(double coeff : coefficients) {
+			if (exp > 0) {
+				result += (coeff + "* x^" + exp + " + ");
+			}
+			else {
+				result += coeff;
+			}
+			exp--;
+		}
+		return result;
 	}
 	
 	/**
